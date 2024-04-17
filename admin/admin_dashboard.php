@@ -129,7 +129,7 @@ $welcome_message = "Welcome, " . $_SESSION["username"] . "!";
         </div>
 
 
-        
+
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
