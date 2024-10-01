@@ -95,13 +95,7 @@ $subCategory = new SubCategory($conn);
 foreach ($categories as $cat) {
     echo '<a class="dropdown-item dropdown-toggle category-item" href="#" data-catid="' . $cat["cat_id"] . '">' . $cat["cat_name"] . '</a>';
     $subCategories = $subCategory->getSubCategoriesByCategoryId($cat["cat_id"]);
-    if (!empty($subCategories)) {
-        echo '<div class="dropdown-menu subcategory-menu" data-catid="' . $cat["cat_id"] . '">';
-        foreach ($subCategories as $subCat) {
-            echo '<a class="dropdown-item subcategory-item" href="product-single.html">' . $subCat["cat_sub_name"] . '</a>';
-        }
-        echo '</div>'; // Close nested dropdown menu 
-    }
+   
 }
 
 
@@ -182,6 +176,29 @@ class Product
         }
         return $products;
     }
+    public function getProductById($productId)
+    {
+        $sql = "SELECT * FROM `products` WHERE `product_id` = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$productId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // Inside your Product class
+    public function searchProducts($keyword){
+        try {
+            $query = "SELECT * FROM products WHERE product_name LIKE ?";
+            $stmt = $this->conn->prepare($query);
+            $keywordPattern = "%$keyword%";
+            $stmt->bind_param('s', $keywordPattern);
+            $stmt->execute();
+            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        } catch (mysqli_sql_exception $e) {
+            throw new Exception("Error searching products: " . $e->getMessage());
+        }
+    }
+
+
 }
 
 // Instantiate Product class 

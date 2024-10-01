@@ -99,13 +99,7 @@ $welcome_message = "Welcome, " . $_SESSION["username"] . "!";
                                     Authentication
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="login.html">Login</a>
-                                        <a class="nav-link" href="register.html">Register</a>
-                                        <a class="nav-link" href="password.html">Forgot Password</a>
-                                    </nav>
-                                </div>
+                                 
                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                                     Error
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -118,13 +112,15 @@ $welcome_message = "Welcome, " . $_SESSION["username"] . "!";
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Add Product
                         </a>
+                        <div class="sb-sidenav-menu-heading">Orders</div>
+                        <a class="nav-link" href="Order.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Recent Order
+                        </a>
 
                     </div>
                 </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                    Start Bootstrap
-                </div>
+               
             </nav>
         </div>
 
